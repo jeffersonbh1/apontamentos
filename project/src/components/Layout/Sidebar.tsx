@@ -39,13 +39,22 @@ const Sidebar: React.FC = () => {
         <div className="flex items-center justify-between">
           {!isCollapsed && (
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Factory className="w-5 h-5 text-white" />
-              </div>
+              <img 
+                src="/bemann.jpg" 
+                alt="Bemann Logo" 
+                className="w-8 h-8 rounded-lg object-cover"
+              />
               <span className="font-bold text-lg text-gray-800 dark:text-white">
-                Production Tracker
+                Bemann
               </span>
             </div>
+          )}
+          {isCollapsed && (
+            <img 
+              src="/bemann.jpg" 
+              alt="Bemann Logo" 
+              className="w-8 h-8 rounded-lg object-cover mx-auto"
+            />
           )}
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -69,9 +78,10 @@ const Sidebar: React.FC = () => {
                 to={item.path}
                 className={`flex items-center px-3 py-2 rounded-lg transition-colors group ${
                   isActive(item.path)
-                    ? 'bg-blue-600 text-white'
+                    ? 'text-black font-semibold shadow-md'
                     : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
+                style={isActive(item.path) ? { backgroundColor: '#D6FF27' } : {}}
               >
                 <item.icon className={`w-5 h-5 ${isCollapsed ? '' : 'mr-3'}`} />
                 {!isCollapsed && (

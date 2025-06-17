@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Factory, Loader2, AlertCircle, CheckCircle, ArrowLeft } from 'lucide-react';
+import { Loader2, AlertCircle, CheckCircle, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 
 const ForgotPassword: React.FC = () => {
@@ -47,8 +47,12 @@ const ForgotPassword: React.FC = () => {
       <div className="max-w-md w-full">
         {/* Logo and Title */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl mb-4 shadow-lg">
-            <Factory className="w-8 h-8 text-white" />
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-2xl mb-4 shadow-lg p-2">
+            <img 
+              src="/bemann.jpg" 
+              alt="Bemann Logo" 
+              className="w-full h-full object-cover rounded-xl"
+            />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
             Reset Password

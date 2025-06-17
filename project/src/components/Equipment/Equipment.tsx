@@ -130,7 +130,8 @@ const Equipment: React.FC = () => {
         </div>
         <button 
           onClick={handleCreateEquipment}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors"
+          className="text-black font-semibold px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors hover:opacity-90"
+          style={{ backgroundColor: '#D6FF27' }}
         >
           <Plus className="w-5 h-5" />
           <span>Add Equipment</span>

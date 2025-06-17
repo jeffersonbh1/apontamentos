@@ -51,7 +51,8 @@ const Reports: React.FC = () => {
           <div className="relative">
             <select
               onChange={(e) => handleExport(e.target.value)}
-              className="appearance-none bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 pr-8 rounded-lg transition-colors cursor-pointer"
+              className="appearance-none text-black font-semibold px-4 py-2 pr-8 rounded-lg transition-colors cursor-pointer hover:opacity-90"
+              style={{ backgroundColor: '#D6FF27' }}
               defaultValue=""
             >
               <option value="" disabled>Export</option>
@@ -59,7 +60,7 @@ const Reports: React.FC = () => {
                 <option key={format} value={format}>{format}</option>
               ))}
             </select>
-            <Download className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white pointer-events-none" />
+            <Download className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
           </div>
         </div>
       </div>
