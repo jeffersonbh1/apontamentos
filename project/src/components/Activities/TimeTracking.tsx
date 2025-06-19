@@ -197,7 +197,7 @@ const TimeTracking: React.FC = () => {
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
             Atividades em Andamento ({activeEntries.length})
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div className="space-y-4">
             {activeEntries.map((entry) => (
               <div
                 key={entry.id}
@@ -228,7 +228,7 @@ const TimeTracking: React.FC = () => {
                   </button>
                 </div>
                 
-                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                   <div className="flex items-center justify-between">
                     <span>Equipamento:</span>
                     <span className="font-medium text-gray-900 dark:text-white">{entry.equipmentName}</span>
@@ -237,15 +237,21 @@ const TimeTracking: React.FC = () => {
                     <span>Iniciado às:</span>
                     <span className="font-mono font-medium text-gray-900 dark:text-white">{formatTime(entry.startTime)}</span>
                   </div>
+                  <div className="flex items-center justify-between">
+                    <span>Tempo Decorrido:</span>
+                    <span className="font-mono font-bold text-green-600 dark:text-green-400">
+                      {formatDuration(getCurrentDuration(entry.startTime))}
+                    </span>
+                  </div>
                 </div>
                 
-                <div className="text-center">
-                  <div className="text-3xl font-mono font-bold text-green-600 dark:text-green-400 mb-2">
+                <div className="flex items-center justify-between">
+                  <div className="text-3xl font-mono font-bold text-green-600 dark:text-green-400">
                     {formatDuration(getCurrentDuration(entry.startTime))}
                   </div>
                   <button
                     onClick={() => handleFinishActivity(entry.id)}
-                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors mx-auto"
+                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors"
                   >
                     <Pause className="w-4 h-4" />
                     <span>Finalizar</span>
@@ -279,25 +285,7 @@ const TimeTracking: React.FC = () => {
               />
             </div>
           </div>
-          {/* Equipment */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Equipamento * {availableEquipment.length === 0 && <span className="text-red-500">(Todos em uso)</span>}
-            </label>
-            <select
-              value={selectedEquipmentId}
-              onChange={(e) => setSelectedEquipmentId(e.target.value)}
-              disabled={availableEquipment.length === 0}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:bg-gray-100 dark:disabled:bg-gray-600 disabled:cursor-not-allowed"
-            >
-              <option value="">Selecione um equipamento</option>
-              {availableEquipment.map(equipment => (
-                <option key={equipment.id} value={equipment.id}>
-                  {equipment.name} - {equipment.location}
-                </option>
-              ))}
-            </select>
-          </div>
+
           {/* Activity */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -335,7 +323,25 @@ const TimeTracking: React.FC = () => {
             </select>
           </div>
 
-          
+          {/* Equipment */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Equipamento * {availableEquipment.length === 0 && <span className="text-red-500">(Todos em uso)</span>}
+            </label>
+            <select
+              value={selectedEquipmentId}
+              onChange={(e) => setSelectedEquipmentId(e.target.value)}
+              disabled={availableEquipment.length === 0}
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:bg-gray-100 dark:disabled:bg-gray-600 disabled:cursor-not-allowed"
+            >
+              <option value="">Selecione um equipamento</option>
+              {availableEquipment.map(equipment => (
+                <option key={equipment.id} value={equipment.id}>
+                  {equipment.name} - {equipment.location}
+                </option>
+              ))}
+            </select>
+          </div>
 
           {/* Start Button */}
           <div className="flex items-end">
